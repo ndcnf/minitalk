@@ -6,7 +6,7 @@
 /*   By: nchennaf <nchennaf@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 12:38:18 by Nadia             #+#    #+#             */
-/*   Updated: 2022/04/14 14:11:12 by nchennaf         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:46:10 by nchennaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 int	main(void)
 {
 	kill(getpid(), SIGUSR1);
+	ft_printf("pid: %d\n", getpid());
 	return (0);
 }
