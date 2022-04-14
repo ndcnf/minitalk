@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchennaf <nchennaf@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 12:41:44 by nchennaf          #+#    #+#             */
-/*   Updated: 2022/04/14 15:56:56 by nchennaf         ###   ########.fr       */
+/*   Created: 2021/10/29 08:31:33 by nchennaf          #+#    #+#             */
+/*   Updated: 2021/11/17 13:44:08 by nchennaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include "./Libft/libft.h"
-# include "./ft_printf/ft_printf.h"
-# include <stdlib.h>
-# include <signal.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-#endif
+size_t	ft_putunbr_fd(unsigned int n, int fd)
+{
+	size_t	count;
+
+	count = 0;
+	if (n >= 0 && n <= 9)
+	{
+		ft_putchar_fd_int(n + '0', fd);
+		return (1);
+	}
+	else if (n >= 0)
+	{
+		count = ft_putnbr_fd_sizet(n / 10, fd);
+		ft_putchar_fd_int((n % 10) + '0', fd);
+		return (count + 1);
+	}
+	else if (n < 0)
+		ft_putnbr_fd_sizet(n, fd);
+	return (0);
+}

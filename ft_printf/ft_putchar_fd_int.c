@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd_int.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchennaf <nchennaf@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 12:41:44 by nchennaf          #+#    #+#             */
-/*   Updated: 2022/04/14 15:56:56 by nchennaf         ###   ########.fr       */
+/*   Created: 2021/11/17 13:31:09 by nchennaf          #+#    #+#             */
+/*   Updated: 2021/11/17 13:31:15 by nchennaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include "./Libft/libft.h"
-# include "./ft_printf/ft_printf.h"
-# include <stdlib.h>
-# include <signal.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-#endif
+// writes the char and returns the count.
+
+int	ft_putchar_fd_int(char c, int fd)
+{
+	return (write (fd, &c, 1));
+}
