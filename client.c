@@ -6,15 +6,14 @@
 /*   By: nchennaf <nchennaf@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 12:38:18 by Nadia             #+#    #+#             */
-/*   Updated: 2022/04/13 12:51:17 by nchennaf         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:11:12 by nchennaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	main(int argc, char *argv[])
+int	main(void)
 {
-	(void)argc;
-	(void)argv;
+	kill(getpid(), SIGUSR1);
 	return (0);
 }
