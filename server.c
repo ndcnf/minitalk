@@ -6,30 +6,38 @@
 /*   By: nchennaf <nchennaf@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 12:38:29 by Nadia             #+#    #+#             */
-/*   Updated: 2022/04/14 15:58:07 by nchennaf         ###   ########.fr       */
+/*   Updated: 2022/04/16 01:32:28 by nchennaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int x = 0;
-
-void	handle_sigusr1(int sig)
+/********************************************
+*	Convert a binary into char				*
+*	Use of a truth table to handle the msg	*
+********************************************/
+void	handle_sig(int sig)
 {
-//	static int	x = 0;
-	(void)sig;
-	if(x == 0)
-		ft_printf("handler ici, pid %d\n", getpid());
+	static char	bits = 0;
+	static int	i = 8;
+
+	bits = bits << 1;
+	if (sig == SIGUSR1)
+		bits = bits | 1;
+	i--;
+	if (i == 0)
+	{
+		ft_putchar_fd(bits, 1);
+		i = 8;
+	}
 }
 
-int		main(void)
+int	main(void)
 {
-	struct sigaction	sa;
-
-	sa.sa_handler = &handle_sigusr1;
-	sigaction(SIGUSR1, &sa, NULL);
-
-	while(1)
+	signal(SIGUSR1, handle_sig);
+	signal(SIGUSR2, handle_sig);
+	ft_printf(HELLO_S, getpid());
+	while (1)
 		pause();
 	return (0);
 }
